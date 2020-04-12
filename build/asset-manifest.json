@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "./static/css/main.b55cf74c.chunk.css",
+    "main.js": "./static/js/main.00c2c012.chunk.js",
+    "main.js.map": "./static/js/main.00c2c012.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.478900f3.js",
+    "runtime-main.js.map": "./static/js/runtime-main.478900f3.js.map",
+    "static/css/2.de424728.chunk.css": "./static/css/2.de424728.chunk.css",
+    "static/js/2.7d1d1781.chunk.js": "./static/js/2.7d1d1781.chunk.js",
+    "static/js/2.7d1d1781.chunk.js.map": "./static/js/2.7d1d1781.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.727288596a1cf42891b44f6f0db0ef25.js": "./precache-manifest.727288596a1cf42891b44f6f0db0ef25.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.de424728.chunk.css.map": "./static/css/2.de424728.chunk.css.map",
+    "static/css/main.b55cf74c.chunk.css.map": "./static/css/main.b55cf74c.chunk.css.map",
+    "static/js/2.7d1d1781.chunk.js.LICENSE.txt": "./static/js/2.7d1d1781.chunk.js.LICENSE.txt",
+    "static/media/Ellipsis200.svg": "./static/media/Ellipsis200.0b4d81d7.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.478900f3.js",
+    "static/css/2.de424728.chunk.css",
+    "static/js/2.7d1d1781.chunk.js",
+    "static/css/main.b55cf74c.chunk.css",
+    "static/js/main.00c2c012.chunk.js"
+  ]
+}

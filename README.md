@@ -4,6 +4,8 @@
 
 Это React App создано с помощью create-react-app </br>
 
+Для изменения начальных данных нужно изменить 'public/testData.json'</br>
+
 Для запуска в developer mode:</br>
 > npm start </br>
 </br>
