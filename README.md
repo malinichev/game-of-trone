@@ -9,4 +9,4 @@
 </br>
 
 Для build:</br>
->> npm run-script build
+> npm run-script build
