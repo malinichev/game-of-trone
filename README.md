@@ -10,4 +10,4 @@
 > npm run-script build</br>
 </br>
 Для изменения начальных данных нужно изменить:</br>
->> public/testData.json</br>
+public/testData.json</br>
