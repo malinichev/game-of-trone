@@ -14,15 +14,13 @@ const Styles = styled.div`
     border-spacing: 0;
     border: 1px solid black;
     tr {
-      
       :last-child {
         td {
           border-bottom: 0;
         }
       }
     }
-    th {
-      
+    th { 
     },
     td {
       margin: 0;
@@ -37,87 +35,87 @@ const Styles = styled.div`
 `
 // Define a default UI for filtering
 function GlobalFilter({
-    preGlobalFilteredRows,
-    globalFilter,
-    setGlobalFilter,
-  }) {
-    const count = preGlobalFilteredRows.length
-  
-    return (
-      <span>
-        Search:{' '}
-        <input
-          value={globalFilter || ''}
-          onChange={e => {
-            setGlobalFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
-          }}
-          placeholder={`${count} records...`}
-          style={{
-            color:'white',
-            fontSize: '1.1rem',
-            backgroundColor:'#454d55',
-            border: '0',
-          }}
-        />
-      </span>
-    )
-  }
-  
-  // Define a default UI for filtering
-  function DefaultColumnFilter({
-    column: { filterValue, preFilteredRows, setFilter },
-  }) {
-    const count = preFilteredRows.length
-  
-    return (
+  preGlobalFilteredRows,
+  globalFilter,
+  setGlobalFilter,
+}) {
+  const count = preGlobalFilteredRows.length
+
+  return (
+    <span>
+      Search:{' '}
       <input
-        value={filterValue || ''}
+        value={globalFilter || ''}
         onChange={e => {
-          setFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
+          setGlobalFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
         }}
-        placeholder={`Search ${count} records...`}
+        placeholder={`${count} records...`}
+        style={{
+          color: 'white',
+          fontSize: '1.1rem',
+          backgroundColor: '#454d55',
+          border: '0',
+        }}
       />
-    )
-  }
-  
-  // This is a custom filter UI for selecting
-  // a unique option from a list  
+    </span>
+  )
+}
+
+// Define a default UI for filtering
+function DefaultColumnFilter({
+  column: { filterValue, preFilteredRows, setFilter },
+}) {
+  const count = preFilteredRows.length
+
+  return (
+    <input
+      value={filterValue || ''}
+      onChange={e => {
+        setFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
+      }}
+      placeholder={`Search ${count} records...`}
+    />
+  )
+}
+
+// This is a custom filter UI for selecting
+// a unique option from a list  
 function fuzzyTextFilterFn(rows, id, filterValue) {
   return matchSorter(rows, filterValue, { keys: [row => row.values[id]] })
 }
 // Let the table remove the filter if the string is empty
 fuzzyTextFilterFn.autoRemove = val => !val
-  
+
 
 function TableFn({ columns, data }) {
 
-    const filterTypes = React.useMemo(
-        () => ({
-          // Add a new fuzzyTextFilterFn filter type.
-          fuzzyText: fuzzyTextFilterFn,
-          // Or, override the default text filter to use
-          // "startWith"
-          text: (rows, id, filterValue) => {
-            return rows.filter(row => {
-              const rowValue = row.values[id]
-              return rowValue !== undefined
-                ? String(rowValue)
-                    .toLowerCase()
-                    .startsWith(String(filterValue).toLowerCase())
-                : true
-            })
-          },
-        }),
-        []
-      )
-    
-      const defaultColumn = React.useMemo(
-        () => ({
-          // Let's set up our default Filter UI
-          Filter: DefaultColumnFilter,
-        }),
-        []
-      )
+  const filterTypes = React.useMemo(
+    () => ({
+      // Add a new fuzzyTextFilterFn filter type.
+      fuzzyText: fuzzyTextFilterFn,
+      // Or, override the default text filter to use
+      // "startWith"
+      text: (rows, id, filterValue) => {
+        return rows.filter(row => {
+          const rowValue = row.values[id]
+          return rowValue !== undefined
+            ? String(rowValue)
+              .toLowerCase()
+              .startsWith(String(filterValue).toLowerCase())
+            : true
+        })
+      },
+    }),
+    []
+  )
+
+  const defaultColumn = React.useMemo(
+    () => ({
+      // Let's set up our default Filter UI
+      Filter: DefaultColumnFilter,
+    }),
+    []
+  )
 
   // Use the state and functions returned from useTable to build your UI
   const {
@@ -145,8 +143,8 @@ function TableFn({ columns, data }) {
   // Render the UI for your table
   return (
     <>
-    <Table striped bordered hover variant="dark" {...getTableProps()}>
-      
+      <Table striped bordered hover variant="dark" {...getTableProps()}>
+
         <thead>
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -167,10 +165,10 @@ function TableFn({ columns, data }) {
               ))}
             </tr>
           ))}
-           <tr>
+          <tr>
             <th
               colSpan={visibleColumns.length}
-              
+
               style={{
                 textAlign: 'left',
               }}
@@ -195,87 +193,88 @@ function TableFn({ columns, data }) {
                     )
                   })}
                 </tr>
-              )}
+              )
+            }
           )}
         </tbody>
-        </Table>
-      
+      </Table>
     </>
   )
 }
 
 // Define a custom filter filter function!
 function filterGreaterThan(rows, id, filterValue) {
-    return rows.filter(row => {
-      const rowValue = row.values[id]
-      return rowValue >= filterValue
-    })
-  }
-  
-  // This is an autoRemove method on the filter function that
-  // when given the new filter value and returns true, the filter
-  // will be automatically removed. Normally this is just an undefined
-  // check, but here, we want to remove the filter if it's not a number
+  return rows.filter(row => {
+    const rowValue = row.values[id]
+    return rowValue >= filterValue
+  })
+}
+
+// This is an autoRemove method on the filter function that
+// when given the new filter value and returns true, the filter
+// will be automatically removed. Normally this is just an undefined
+// check, but here, we want to remove the filter if it's not a number
 filterGreaterThan.autoRemove = val => typeof val !== 'number'
 
 
-function HomePage({heros, delHero}) {
-  
+function HomePage({ heros, delHero }) {
+
   const columns = React.useMemo(
     () => [
-      
-        {
-            Header: 'Id',
-            accessor: 'id',
-            
-        },
-        {
-            Header: 'Имя персонажа',
-            accessor: 'name',
-            
-        },
-        {
-            Header: 'Описание персонажа',
-            accessor: 'about',
-            
-        },
-        {
-            Header: 'Причина смерти',
-            accessor: 'reasonofdie',
-            
-        },
-        {
-            Header: 'Кем убит',
-            accessor: 'whokilled',
-            
-        },
-        {
-            Header: 'Орудие убийства',
-            accessor: 'killedwepon',
-            
-        },
-        {
-            Header: 'Actions',
-            Cell: props => {
-              
-              return (
-                <div className={s.myAction}>
-                  <Button 
-                      variant="danger"
-                      onClick={()=>{
-                        delHero(props.row.original.id)}}
-                  >
-                      Del Hero
-                  </Button>
-                  <Link  to={`/edit/${props.row.original.id}`} className="btn btn-warning">
-                      Edit Hero
-                  </Link>
-                </div>
-              );
-            }
-            
-        },
-       
+
+      {
+        Header: 'Id',
+        accessor: 'id',
+
+      },
+      {
+        Header: 'Имя персонажа',
+        accessor: 'name',
+
+      },
+      {
+        Header: 'Описание персонажа',
+        accessor: 'about',
+
+      },
+      {
+        Header: 'Причина смерти',
+        accessor: 'reasonofdie',
+
+      },
+      {
+        Header: 'Кем убит',
+        accessor: 'whokilled',
+
+      },
+      {
+        Header: 'Орудие убийства',
+        accessor: 'killedwepon',
+
+      },
+      {
+        Header: 'Actions',
+        Cell: props => {
+
+          return (
+            <div className={s.myAction}>
+              <Button
+                variant="danger"
+                onClick={() => {
+                  delHero(props.row.original.id)
+                }}
+              >
+                Del Hero
+              </Button>
+              <Link to={`/edit/${props.row.original.id}`} className="btn btn-warning">
+                Edit Hero
+              </Link>
+            </div>
+          );
+        }
+
+      },
+
     ],
     [delHero]
   )

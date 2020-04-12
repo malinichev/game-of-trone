@@ -7,8 +7,8 @@ import store from './redux/redux-store';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 
-   
-    ReactDOM.render(
+
+ReactDOM.render(
         <Provider store={store}>
                 <App />
         </Provider>, document.getElementById('root'));
