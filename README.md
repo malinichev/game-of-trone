@@ -7,6 +7,7 @@
 </br>
 
 Для build:</br>
-> npm run-script build
-
-Для изменения начальных данных нужно изменить 'public/testData.json'</br>
+> npm run-script build</br>
+</br>
+Для изменения начальных данных нужно изменить:</br>
+> public/testData.json</br>
