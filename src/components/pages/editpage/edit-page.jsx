@@ -26,24 +26,24 @@ const EditPage = (props) =>{
                     <Field name={'id'} className='form-control' hidden component={'input'}/>
                     <Form.Group controlId="formGroupBody">
                         <Form.Label>Имя персонажа</Form.Label>
-                        <Field name={'name'} className='form-control' component={'input'}/>
+                        <Field name={'name'} className='form-control' required component={'input'}/>
                     </Form.Group>
                     
                     <Form.Group controlId="formGroupBody">
                         <Form.Label>Описание персонажа</Form.Label>
-                        <Field name={'about'} className='form-control' component={'input'}/>
+                        <Field name={'about'} className='form-control' required component={'input'}/>
                     </Form.Group>
                     <Form.Group controlId="formGroupBody">
                         <Form.Label>Причина смерти</Form.Label>
-                        <Field name={'reasonofdie'} className='form-control' component={'input'}/>
+                        <Field name={'reasonofdie'} className='form-control' required component={'input'}/>
                     </Form.Group>
                     <Form.Group controlId="formGroupBody">
                         <Form.Label>Кем убит</Form.Label>
-                        <Field name={'whokilled'} className='form-control' component={'input'}/>
+                        <Field name={'whokilled'} className='form-control' required component={'input'}/>
                     </Form.Group>
                     <Form.Group controlId="formGroupBody">
                         <Form.Label>Орудие убийства</Form.Label>
-                        <Field name={'killedwepon'} className='form-control' component={'input'}/>
+                        <Field name={'killedwepon'} className='form-control' required component={'input'}/>
                     </Form.Group>
                     
                     
